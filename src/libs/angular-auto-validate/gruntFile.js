@@ -23,7 +23,7 @@
 
       // Style Checks
       jshint: {
-        files: ['<%= srcfolder %>**/*.js', '<%= testsfolder %>**/*.spec.js'],
+        files: ['<%= srcfolder %>**/*.js','!<%= srcfolder %>**/*-postfix.js', '!<%= srcfolder %>**/*-prefix.js', '<%= testsfolder %>**/*.spec.js'],
         options: {
           jshintrc: '.jshintrc'
         }
@@ -50,7 +50,7 @@
             evalCode: false,
             indentChar: " ",
             indentLevel: 0,
-            indentSize: 4,
+            indentSize: 2,
             indentWithTabs: false,
             jslintHappy: true,
             keepArrayIndentation: false,
@@ -151,19 +151,24 @@
           ' */\n'
         },
         dist: {
-          src: ['src/jcs-auto-validate.js',
+          src: [
+            'src/jcs-auto-validate-prefix.js',
+            'src/jcs-auto-validate.js',
             'src/providers/validator.js',
             'src/services/bootstrap3ElementModifier.js',
             'src/services/debounce.js',
             'src/services/defaultErrorMessageResolver.js',
             'src/services/foundation5ElementModifier.js',
+            'src/services/foundation6ElementModifier.js',
             'src/services/validationManager.js',
             'src/directives/autoValidateFormOptions.js',
             'src/directives/formReset.js',
             'src/directives/registerCustomFormControl.js',
             'src/config/ngSubmitDecorator.js',
             'src/config/ngModelDecorator.js',
-            'src/jcs-auto-validate-run.js'],
+            'src/jcs-auto-validate-run.js',
+            'src/jcs-auto-validate-postfix.js'
+          ],
           dest: 'dist/jcs-auto-validate.js'
         }
       },
@@ -175,7 +180,7 @@
             jshint: grunt.file.readJSON('.jshintrc')
           },
           files: {
-            'tests/reports/complexity': ['src/**/*.js']
+            'tests/reports/complexity': ['src/**/*.js', '!src/**/*-postfix.js', '!src/**/*-prefix.js']
           }
         }
       }

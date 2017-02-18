@@ -1,3 +1,70 @@
+v1.19.3 30/11/2015
+Fixed a problem with ng-model-options updateOn blur/default with debounce not validating - a bit of a tricky problem!
+
+v1.19.2 30/11/2015
+Added ability for the library to delay showing validation hints on an element while async validators are firing.
+This functionality is enabled by default - to disbale it change the 'waitForAsyncValidators' option in the defaultFormValidationOptions
+on the validation provider. Or on a per form basis by adding the attribute wait-for-async-validators="true|false" on
+a form. See http://plnkr.co/edit/3YXEQAU051N4gFCRPi7S?p=preview for a demo.
+
+v1.19.1 16/11/2015
+Fixed problem with the de-bounce function in the ngModel decorator.
+Option added to the validator service to automatically scroll to the first invalid input.
+
+v1.19.0 25/10/2015
+Possible breaking change fixing i18n caching issue with en-us and en-gb files.  The default language
+is now 'default' and not en-gb.
+New Turkish translation.
+Updated German translation
+IE10 speed improvement when validating a form.
+The BS3 modifier no longer adds the has-feedback class if state icons are not enabled.
+Fixed issue when serialising the form controller to json
+You can now add the attribute disable-auto-validate="true" to an element and it won't validate.
+
+v1.18.17 2/09/2015
+Added pt-pt and zh-tw lang files
+
+v1.18.16 03/09/2015
+Fixes issue (https://github.com/jonsamwell/angular-auto-validate/issues/88) where the node is a comment.
+Fixes issue with validation error message placement with checkboxes and radio groups for the BS3 modifier.
+
+V1.18.15 01/09/2015
+Added nl-nl (Dutch) language file thanks to <Jonathan voor de Poorte>
+Added zh-cn (simplified chinese) language file thanks to <https://github.com/bwlee>
+Foundation modifier now checks for either the 'columns' or 'column' class as you can you either with foundation 5.
+Fixed issue https://github.com/jonsamwell/angular-auto-validate/issues/85 supportsNgModelOptions logic mistake
+
+V1.18.14 23/08/2015
+Fixed issue with globally changing default form validation options.
+
+V1.18.13 21/08/2015
+Added a default value for the form option validateOnFormSubmit in the validator.
+
+V1.18.12 20/08/2015
+Added the ability to defer validation until after a form submit by adding the attribute 'validate-on-form-submit="true"'
+to the form element.
+
+V1.18.11 20/08/2015
+Fixed issue ngModelDecorator not working with angular-material due to incorrect pre and post function invocations
+
+V1.18.10 03/08/2015
+Fixed issue #61 with globally disabling the library and enabling it for a particular form
+
+V1.18.9 03/08/2015
+Fixed #68
+Setting form to untouched and pristine when a form reset is requested
+
+V1.18.8 03/08/2015
+Reset a form programatically is now possible via the resetForm method on the form controllers autoValidateFormOptions object
+or by raising the event 'form:{formName}:reset on the controllers scope.  The formName is the value in the name attribute
+on the form tag which also corresponds to the formController.$name property.
+Fixes issue with removing external validation raised in https://github.com/jonsamwell/angular-auto-validate/issues/39
+
+V1.18.7 01/08/2015
+Added Spanish i18n file.
+Fixed issue https://github.com/jonsamwell/angular-auto-validate/issues/73
+Added the ability to reset the form via the form controller (https://github.com/jonsamwell/angular-auto-validate/issues/82)
+
 V1.18.6 16/04/2015
 Increased limit on findWithClassElementAsc in BS3Modifier to find an element.
 Fixed issues with globally disabling validation and only applying it on certain forms.
