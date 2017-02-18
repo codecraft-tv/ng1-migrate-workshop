@@ -1,0 +1,72 @@
+<div class="col-md-12" >
+
+	<div class="row"
+	     infinite-scroll="loadMore()"
+	     infinite-scroll-immediate-check="false"
+	     infinite-scroll-distance="1"
+			>
+
+		<cc-card ng-repeat="person in contacts.persons"
+				     user="person" >
+		</cc-card>
+
+	</div >
+
+	<!--<table class="table table-bordered"-->
+	<!--infinite-scroll="loadMore()"-->
+	<!--infinite-scroll-immediate-check="false"-->
+	<!--infinite-scroll-distance="1" >-->
+
+	<!--<tr >-->
+	<!--<th class="col-1" >#</th >-->
+	<!--<th class="col-2" >-->
+	<!--<div class="sortables" >-->
+	<!--<span ng-click="order = 'name'"-->
+	<!--class="fa fa-sort-asc" ></span >-->
+	<!--<span ng-click="order = '-name'"-->
+	<!--class="fa fa-sort-desc" ></span >-->
+	<!--</div >-->
+	<!--Name-->
+	<!--</th >-->
+	<!--<th class="col-3" >-->
+	<!--<div class="sortables" >-->
+	<!--<span ng-click="order = 'email'"-->
+	<!--class="fa fa-sort-asc" ></span >-->
+	<!--<span ng-click="order = '-email'"-->
+	<!--class="fa fa-sort-desc" ></span >-->
+	<!--</div >-->
+	<!--Email-->
+	<!--</th >-->
+	<!--<th class="col-4" >Phone</th >-->
+	<!--</tr >-->
+
+	<!--<tr ng-repeat="person in contacts.persons"-->
+	<!--ng-style="{-->
+	<!--'background-color': person.email == contacts.selectedPerson.email ? 'lightgray' : ''-->
+	<!--}"-->
+	<!--ui-sref="edit({email:person.email})" >-->
+	<!--<td >-->
+	<!--<img ng-src="{{person.photo|defaultImage:'./avatar.png'}}"-->
+	<!--class="img-circle profile-photo"-->
+	<!--alt="" />-->
+	<!--</td >-->
+	<!--<td >-->
+	<!--{{ person.name }}</td >-->
+	<!--<td >{{ person.email }}</td >-->
+	<!--<td >{{ person.phonenumber }}</td >-->
+	<!--</tr >-->
+
+
+	<!--</table >-->
+
+	<div ng-show="contacts.persons.length == 0 && !contacts.isLoading" >
+		<div class="alert alert-info" >
+			<p class="text-center" >No results found for search term '{{ search }}'</p >
+		</div >
+	</div >
+
+	<cc-spinner is-loading="contacts.isLoading"
+	            message="Mooing..." ></cc-spinner >
+
+
+</div >

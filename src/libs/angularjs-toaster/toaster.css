@@ -1,0 +1,44 @@
+/*
+Syntax error: Invalid US-ASCII character "\xC3"
+        on line 4 of toaster.scss
+
+1: /*
+2:  * Toastr
+3:  * Version 2.0.1
+4:  * Copyright 2012 John Papa and Hans Fjällemark.  
+5:  * All Rights Reserved.  
+6:  * Use, reproduction, distribution, and modification of this code is subject to the terms and 
+7:  * conditions of the MIT license, available at http://www.opensource.org/licenses/mit-license.php
+8:  *
+9:  * Author: John Papa and Hans Fjällemark
+
+Backtrace:
+toaster.scss:4
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/lib/sass/engine.rb:373:in `block in check_encoding!'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/lib/sass/util.rb:604:in `rescue in block in check_encoding'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/lib/sass/util.rb:601:in `block in check_encoding'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/lib/sass/util.rb:600:in `each'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/lib/sass/util.rb:600:in `each_with_index'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/lib/sass/util.rb:600:in `check_encoding'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/lib/sass/util.rb:654:in `check_sass_encoding'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/lib/sass/engine.rb:372:in `check_encoding!'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/lib/sass/engine.rb:339:in `_to_tree'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/lib/sass/engine.rb:315:in `_render'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/lib/sass/engine.rb:262:in `render'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/lib/sass/plugin/compiler.rb:362:in `update_stylesheet'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/lib/sass/plugin/compiler.rb:203:in `block in update_stylesheets'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/lib/sass/plugin/compiler.rb:201:in `each'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/lib/sass/plugin/compiler.rb:201:in `update_stylesheets'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/lib/sass/plugin.rb:81:in `update_stylesheets'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/lib/sass/exec.rb:443:in `watch_or_update'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/lib/sass/exec.rb:326:in `process_result'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/lib/sass/exec.rb:41:in `parse'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/lib/sass/exec.rb:21:in `parse!'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/bin/scss:13:in `<top (required)>'
+/usr/bin/scss:23:in `load'
+/usr/bin/scss:23:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: Invalid US-ASCII character \"\xC3\"\A         on line 4 of toaster.scss\A \A 1: /*\A 2:  * Toastr\A 3:  * Version 2.0.1\A 4:  * Copyright 2012 John Papa and Hans Fjällemark.  \A 5:  * All Rights Reserved.  \A 6:  * Use, reproduction, distribution, and modification of this code is subject to the terms and \A 7:  * conditions of the MIT license, available at http://www.opensource.org/licenses/mit-license.php\A 8:  *\A 9:  * Author: John Papa and Hans Fjällemark"; }
