@@ -1,4 +1,3 @@
-
 app.controller('PersonCreateController', function ($scope, $state, ContactService) {
   $scope.mode = "Create";
   $scope.contacts = ContactService;
