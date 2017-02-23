@@ -4,11 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "./node_modules/.bin/json-server --watch ./data/db.json"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bower": "^1.8.0"
+  },
+  "devDependencies": {
+    "json-server": "^0.9.5"
   }
 }
