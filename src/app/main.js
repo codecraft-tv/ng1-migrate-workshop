@@ -148,9 +148,7 @@ app.controller('PersonListController', function ($scope, $modal, ContactService)
 
 });
 
-app.service('ContactService', function (Contact, $rootScope, $q, toaster) {
-
-
+app.factory('ContactService', function (Contact, $rootScope, $q, toaster) {
   var self = {
     'getPerson'     : function (email) {
       console.log(email);
