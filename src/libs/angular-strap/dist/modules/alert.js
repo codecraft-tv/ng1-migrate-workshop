@@ -1,6 +1,6 @@
 /**
  * angular-strap
- * @version v2.2.4 - 2015-05-28
+ * @version v2.3.12 - 2017-01-26
  * @link http://mgcrea.github.io/angular-strap
  * @author Olivier Louvignes <olivier@mg-crea.com> (https://github.com/mgcrea)
  * @license MIT License, http://www.opensource.org/licenses/MIT
@@ -13,7 +13,7 @@ angular.module('mgcrea.ngStrap.alert', [ 'mgcrea.ngStrap.modal' ]).provider('$al
     prefixClass: 'alert',
     prefixEvent: 'alert',
     placement: null,
-    template: 'alert/alert.tpl.html',
+    templateUrl: 'alert/alert.tpl.html',
     container: false,
     element: null,
     backdrop: false,
@@ -46,7 +46,6 @@ angular.module('mgcrea.ngStrap.alert', [ 'mgcrea.ngStrap.modal' ]).provider('$al
     return AlertFactory;
   } ];
 }).directive('bsAlert', [ '$window', '$sce', '$alert', function($window, $sce, $alert) {
-  var requestAnimationFrame = $window.requestAnimationFrame || $window.setTimeout;
   return {
     restrict: 'EAC',
     scope: true,
@@ -56,28 +55,38 @@ angular.module('mgcrea.ngStrap.alert', [ 'mgcrea.ngStrap.modal' ]).provider('$al
         element: element,
         show: false
       };
-      angular.forEach([ 'template', 'placement', 'keyboard', 'html', 'container', 'animation', 'duration', 'dismissable' ], function(key) {
+      angular.forEach([ 'template', 'templateUrl', 'controller', 'controllerAs', 'placement', 'keyboard', 'html', 'container', 'animation', 'duration', 'dismissable' ], function(key) {
         if (angular.isDefined(attr[key])) options[key] = attr[key];
       });
       var falseValueRegExp = /^(false|0|)$/i;
       angular.forEach([ 'keyboard', 'html', 'container', 'dismissable' ], function(key) {
         if (angular.isDefined(attr[key]) && falseValueRegExp.test(attr[key])) options[key] = false;
       });
+      angular.forEach([ 'onBeforeShow', 'onShow', 'onBeforeHide', 'onHide' ], function(key) {
+        var bsKey = 'bs' + key.charAt(0).toUpperCase() + key.slice(1);
+        if (angular.isDefined(attr[bsKey])) {
+          options[key] = scope.$eval(attr[bsKey]);
+        }
+      });
       if (!scope.hasOwnProperty('title')) {
         scope.title = '';
       }
       angular.forEach([ 'title', 'content', 'type' ], function(key) {
-        attr[key] && attr.$observe(key, function(newValue, oldValue) {
-          scope[key] = $sce.trustAsHtml(newValue);
-        });
-      });
-      attr.bsAlert && scope.$watch(attr.bsAlert, function(newValue, oldValue) {
-        if (angular.isObject(newValue)) {
-          angular.extend(scope, newValue);
-        } else {
-          scope.content = newValue;
+        if (attr[key]) {
+          attr.$observe(key, function(newValue, oldValue) {
+            scope[key] = $sce.trustAsHtml(newValue);
+          });
         }
-      }, true);
+      });
+      if (attr.bsAlert) {
+        scope.$watch(attr.bsAlert, function(newValue, oldValue) {
+          if (angular.isObject(newValue)) {
+            angular.extend(scope, newValue);
+          } else {
+            scope.content = newValue;
+          }
+        }, true);
+      }
       var alert = $alert(options);
       element.on(attr.trigger || 'click', alert.toggle);
       scope.$on('$destroy', function() {

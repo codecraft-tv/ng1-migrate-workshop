@@ -1,6 +1,6 @@
 /**
  * angular-strap
- * @version v2.2.4 - 2015-05-28
+ * @version v2.3.12 - 2017-01-26
  * @link http://mgcrea.github.io/angular-strap
  * @author Olivier Louvignes <olivier@mg-crea.com> (https://github.com/mgcrea)
  * @license MIT License, http://www.opensource.org/licenses/MIT
@@ -23,7 +23,9 @@ angular.module('mgcrea.ngStrap.collapse', []).provider('$collapse', function() {
     });
     var falseValueRegExp = /^(false|0|)$/i;
     angular.forEach([ 'disallowToggle', 'startCollapsed', 'allowMultiple' ], function(key) {
-      if (angular.isDefined($attrs[key]) && falseValueRegExp.test($attrs[key])) self.$options[key] = false;
+      if (angular.isDefined($attrs[key]) && falseValueRegExp.test($attrs[key])) {
+        self.$options[key] = false;
+      }
     });
     self.$toggles = [];
     self.$targets = [];
@@ -53,8 +55,8 @@ angular.module('mgcrea.ngStrap.collapse', []).provider('$collapse', function() {
     self.$setActive = $scope.$setActive = function(value) {
       if (angular.isArray(value)) {
         self.$targets.$active = value;
-      } else if (!self.$options.disallowToggle) {
-        isActive(value) ? deactivateItem(value) : activateItem(value);
+      } else if (!self.$options.disallowToggle && isActive(value)) {
+        deactivateItem(value);
       } else {
         activateItem(value);
       }
@@ -63,7 +65,10 @@ angular.module('mgcrea.ngStrap.collapse', []).provider('$collapse', function() {
       });
     };
     self.$activeIndexes = function() {
-      return self.$options.allowMultiple ? self.$targets.$active : self.$targets.$active.length === 1 ? self.$targets.$active[0] : -1;
+      if (self.$options.allowMultiple) {
+        return self.$targets.$active;
+      }
+      return self.$targets.$active.length === 1 ? self.$targets.$active[0] : -1;
     };
     function fixActiveItemIndexes(index) {
       var activeIndexes = self.$targets.$active;
@@ -78,7 +83,7 @@ angular.module('mgcrea.ngStrap.collapse', []).provider('$collapse', function() {
     }
     function isActive(value) {
       var activeItems = self.$targets.$active;
-      return activeItems.indexOf(value) === -1 ? false : true;
+      return activeItems.indexOf(value) !== -1;
     }
     function deactivateItem(value) {
       var index = self.$targets.$active.indexOf(value);
@@ -102,7 +107,6 @@ angular.module('mgcrea.ngStrap.collapse', []).provider('$collapse', function() {
     return $collapse;
   };
 }).directive('bsCollapse', [ '$window', '$animate', '$collapse', function($window, $animate, $collapse) {
-  var defaults = $collapse.defaults;
   return {
     require: [ '?ngModel', 'bsCollapse' ],
     controller: [ '$scope', '$element', '$attrs', $collapse.controller ],
@@ -135,7 +139,6 @@ angular.module('mgcrea.ngStrap.collapse', []).provider('$collapse', function() {
   return {
     require: [ '^?ngModel', '^bsCollapse' ],
     link: function postLink(scope, element, attrs, controllers) {
-      var ngModelCtrl = controllers[0];
       var bsCollapseCtrl = controllers[1];
       element.attr('data-toggle', 'collapse');
       bsCollapseCtrl.$registerToggle(element);
@@ -143,9 +146,11 @@ angular.module('mgcrea.ngStrap.collapse', []).provider('$collapse', function() {
         bsCollapseCtrl.$unregisterToggle(element);
       });
       element.on('click', function() {
-        var index = attrs.bsCollapseToggle || bsCollapseCtrl.$toggles.indexOf(element);
-        bsCollapseCtrl.$setActive(index * 1);
-        scope.$apply();
+        if (!attrs.disabled) {
+          var index = attrs.bsCollapseToggle && attrs.bsCollapseToggle !== 'bs-collapse-toggle' ? attrs.bsCollapseToggle : bsCollapseCtrl.$toggles.indexOf(element);
+          bsCollapseCtrl.$setActive(index * 1);
+          scope.$apply();
+        }
       });
     }
   };
@@ -153,7 +158,6 @@ angular.module('mgcrea.ngStrap.collapse', []).provider('$collapse', function() {
   return {
     require: [ '^?ngModel', '^bsCollapse' ],
     link: function postLink(scope, element, attrs, controllers) {
-      var ngModelCtrl = controllers[0];
       var bsCollapseCtrl = controllers[1];
       element.addClass('collapse');
       if (bsCollapseCtrl.$options.animation) {

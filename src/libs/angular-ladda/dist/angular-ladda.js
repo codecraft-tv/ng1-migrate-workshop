@@ -1,4 +1,4 @@
-/*! angular-ladda 0.2.2 */
+/*! angular-ladda 0.4.3 */
 /**!
  * AngularJS Ladda directive
  * @author Chungsub Kim <subicura@subicura.com>
@@ -9,28 +9,22 @@
 (function (root, factory)
 {
   'use strict';
-  var Ladda;
-  if (typeof exports === 'object') {
-    // CommonJS module
-    // Load ladda
-    try { Ladda = require('ladda'); } catch (e) {}
-    module.exports = factory(Ladda);
-  } else if (typeof define === 'function' && define.amd) {
+  if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(function (req)
-    {
-      // Load ladda as an optional dependency
-      var id = 'ladda';
-      try { Ladda = req(id); } catch (e) {}
-      return factory(Ladda);
-    });
+    define(['angular', 'ladda'], factory);
+  } else if (typeof module !== 'undefined' && typeof module.exports === 'object') {
+    // CommonJS support (for us webpack/browserify/ComponentJS folks)
+    module.exports = factory(window.angular || require('angular'), require('ladda'));
   } else {
-    root.Ladda = factory(root.Ladda);
+    // in the case of no module loading system
+    return factory(root.angular, root.Ladda);
   }
-}(this, function (Ladda){
+}(this, function (angular, Ladda){
   'use strict';
 
-  angular.module('angular-ladda', [])
+  var moduleName = 'angular-ladda';
+  
+  angular.module(moduleName, [])
     .provider('ladda', function () {
       var opts = {
         'style': 'zoom-in'
@@ -44,47 +38,64 @@
         }
       };
     })
-    .directive('ladda', ['ladda', function (laddaOption) {
+    .directive('ladda', ['ladda', '$timeout', function (laddaOption, $timeout) {
       return {
         restrict: 'A',
         priority: -1,
         link: function (scope, element, attrs) {
-          element.addClass('ladda-button');
-          if(angular.isUndefined(element.attr('data-style'))) {
-            element.attr('data-style', laddaOption.style || 'zoom-in');
-          }
+          $timeout(function() {
+            element.addClass('ladda-button');
+            if(angular.isUndefined(element.attr('data-style'))) {
+              element.attr('data-style', laddaOption.style || 'zoom-in');
+            }
+            if(angular.isUndefined(element.attr('data-spinner-size')) && laddaOption.spinnerSize) {
+              element.attr('data-spinner-size', laddaOption.spinnerSize);
+            }
+            if(angular.isUndefined(element.attr('data-spinner-color')) && laddaOption.spinnerColor) {
+              element.attr('data-spinner-color', laddaOption.spinnerColor);
+            }
 
-          // ladda breaks childNode's event property.
-          // because ladda use innerHTML instead of append node
-          if(!element[0].querySelector('.ladda-label')) {
-            var labelWrapper = document.createElement('span');
-            labelWrapper.className = 'ladda-label';
-            angular.element(labelWrapper).append(element.contents());
-            element.append(labelWrapper);
-          }
+            // ladda breaks childNode's event property.
+            // because ladda use innerHTML instead of append node
+            if(!element[0].querySelector('.ladda-label')) {
+              var labelWrapper = document.createElement('span');
+              labelWrapper.className = 'ladda-label';
+              angular.element(labelWrapper).append(element.contents());
+              element.append(labelWrapper);
+            }
 
-          // create ladda button
-          var ladda = Ladda.create( element[0] );
+            // create ladda button
+            var ladda = Ladda.create( element[0] );
 
-          // add watch!
-          scope.$watch(attrs.ladda, function(loading) {
-            if(loading || angular.isNumber(loading)) {
+            // add watch!
+            scope.$watch(attrs.ladda, function(loading) {
+              if(!loading && !angular.isNumber(loading)) {
+                ladda.stop();
+                // When the button also have the ng-disabled directive it needs to be
+                // re-evaluated since the disabled attribute is removed by the 'stop' method.
+                if (attrs.ngDisabled) {
+                  element.attr('disabled', scope.$eval(attrs.ngDisabled));
+                }
+                return;
+              }
               if(!ladda.isLoading()) {
                 ladda.start();
               }
               if(angular.isNumber(loading)) {
                 ladda.setProgress(loading);
               }
-            } else {
-              ladda.stop();
-              // When the button also have the ng-disabled directive it needs to be 
-              // re-evaluated since the disabled attribute is removed by the 'stop' method.
-              if (attrs.ngDisabled) {
-                element.attr('disabled', scope.$eval(attrs.ngDisabled));
+            });
+            
+            // use remove on scope destroy to stop memory leaks 
+            scope.$on('$destroy', function () {
+              if (ladda) { // prevent null reference
+                ladda.remove();
               }
-            }
+            });
           });
         }
       };
     }]);
+    
+  return moduleName;
 }));

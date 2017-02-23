@@ -1,5 +1,36 @@
 # angular-ladda
 
+## 0.4.3
+ * prevent ladda null reference
+
+## 0.4.2
+ * fix size caculate error
+
+## 0.4.1
+ * fix npm package dependency setting
+
+## 0.4
+ * update bower & npm config file
+ * update ladda version 1.0 & angular version
+
+## 0.3.4
+ * change bower dependency version
+
+## 0.3.3
+ * support global spinner-size, spinner-color config
+
+## 0.3.2
+ * use window.angular in CommonJS (@radotzki)
+ * fix memory leak (@mihaipanait)
+
+## 0.3.1
+ * remove requirejs from bower.json
+
+## 0.3.0
+ * upgrade ladda latest version (0.9.8)
+ * AMD(requirejs) / CommonJS(webpack) support
+ * support npm
+
 ## 0.2.2
  * Requirejs / AMD support 
 
