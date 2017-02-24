@@ -1,4 +1,6 @@
-var app = angular.module('codecraft', [
+import * as angular from 'angular';
+
+export let app = angular.module('codecraft', [
   'ngResource',
   'infinite-scroll',
   'angularSpinner',
@@ -16,7 +18,7 @@ app.config(function ($httpProvider, $resourceProvider, laddaProvider, $datepicke
   });
   angular.extend($datepickerProvider.defaults, {
     dateFormat: 'd/M/yyyy',
-    autoclose : true
+    autoclose: true
   });
 });
 
