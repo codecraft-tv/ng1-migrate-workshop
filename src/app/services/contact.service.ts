@@ -7,6 +7,7 @@ angular
       var self = {
         'getPerson': function (email) {
           console.log(email);
+          debugger;
           for (var i = 0; i < self.persons.length; i++) {
             var obj = self.persons[i];
             if (obj.email == email) {
