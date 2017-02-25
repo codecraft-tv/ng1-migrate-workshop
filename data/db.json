@@ -31,21 +31,6 @@
       "favorite": false
     },
     {
-      "id": 664,
-      "createdTs": "2016-12-19T19:43:24.972417Z",
-      "updatedTs": "2016-12-19T19:43:24.972455Z",
-      "name": "Dangelo Boehm",
-      "email": "jerry.cole@ben.net",
-      "sex": "M",
-      "birthdate": "1979-07-13T10:24:37.971940Z",
-      "phonenumber": "1-413-997-09310",
-      "address": "82186 Macejkovic Corner",
-      "city": "North Donatoberg",
-      "country": "Wales",
-      "photo": "https://randomuser.me/api/portraits/women/7.jpg",
-      "favorite": false
-    },
-    {
       "id": 698,
       "createdTs": "2016-12-19T19:43:25.038462Z",
       "updatedTs": "2016-12-19T19:43:25.038499Z",

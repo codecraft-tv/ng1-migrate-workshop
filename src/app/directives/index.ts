@@ -1,2 +1,2 @@
-import "./card.directive";
+// import "./card.directive";
 import "./spinner.directive";
