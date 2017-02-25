@@ -1,6 +1,6 @@
 import * as angular from 'angular';
 
-let CodeCraftCardComponent = {
+let CardComponent = {
   selector: 'ccCard',
   template: `
 <div class="col-md-6" >
@@ -49,7 +49,7 @@ let CodeCraftCardComponent = {
   bindings: {
     'user': '='
   },
-  controller: class CodeCraftCardController {
+  controller: class CardController {
     private ContactService;
     private isDeleting;
     private user;
@@ -71,4 +71,4 @@ let CodeCraftCardComponent = {
 
 angular
     .module('codecraft')
-    .component(CodeCraftCardComponent.selector, CodeCraftCardComponent);
+    .component(CardComponent.selector, CardComponent);
