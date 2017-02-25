@@ -28,6 +28,7 @@ export class ContactService {
   }
 
   getPerson(email) {
+    debugger;
     for (let person of this.persons) {
       if (person.email == email) {
         return person;

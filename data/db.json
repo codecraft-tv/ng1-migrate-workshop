@@ -16,21 +16,6 @@
       "favorite": false
     },
     {
-      "id": 695,
-      "createdTs": "2016-12-19T19:43:25.031640Z",
-      "updatedTs": "2016-12-19T19:43:25.031670Z",
-      "name": "Bell Schaefer",
-      "email": "jade@raphael.info",
-      "sex": "M",
-      "birthdate": "1981-02-11T08:35:53.031223Z",
-      "phonenumber": "1-1009-265-3975 x0010",
-      "address": "89579 Koepp Roads",
-      "city": "D'Amoreland",
-      "country": "England",
-      "photo": "https://randomuser.me/api/portraits/men/38.jpg",
-      "favorite": false
-    },
-    {
       "id": 698,
       "createdTs": "2016-12-19T19:43:25.038462Z",
       "updatedTs": "2016-12-19T19:43:25.038499Z",
