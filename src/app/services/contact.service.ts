@@ -1,5 +1,6 @@
 import * as angular from 'angular';
 
+
 angular
     .module('codecraft')
     .factory('ContactService', function (Contact, $rootScope, $q, toaster) {
@@ -7,7 +8,6 @@ angular
       var self = {
         'getPerson': function (email) {
           console.log(email);
-          debugger;
           for (var i = 0; i < self.persons.length; i++) {
             var obj = self.persons[i];
             if (obj.email == email) {
@@ -49,13 +49,12 @@ angular
               'q': self.search
             };
 
-            Contact.query(params, function (data) {
-              console.log(data);
-              angular.forEach(data, function (person) {
-                self.persons.push(new Contact(person));
+            Contact.query(params).then(function (res) {
+              console.log(res.data);
+              angular.forEach(res.data, function (person) {
+                self.persons.push(person);
               });
-
-              if (!data.next) {
+              if (!res.data) {
                 self.hasMore = false;
               }
               self.isLoading = false;
@@ -72,7 +71,7 @@ angular
         'updateContact': function (person) {
           var d = $q.defer();
           self.isSaving = true;
-          person.$update().then(function () {
+          Contact.update(person).then(function () {
             self.isSaving = false;
             toaster.pop('success', 'Updated ' + person.name);
             d.resolve()
@@ -82,7 +81,7 @@ angular
         'removeContact': function (person) {
           var d = $q.defer();
           self.isDeleting = true;
-          person.$remove().then(function () {
+          Contact.remove(person).then(function () {
             self.isDeleting = false;
             var index = self.persons.indexOf(person);
             self.persons.splice(index, 1);
@@ -95,7 +94,7 @@ angular
         'createContact': function (person) {
           var d = $q.defer();
           self.isSaving = true;
-          Contact.save(person).$promise.then(function () {
+          Contact.save(person).then(function () {
             self.isSaving = false;
             self.selectedPerson = null;
             self.hasMore = true;
