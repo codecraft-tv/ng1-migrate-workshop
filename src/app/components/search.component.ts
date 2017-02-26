@@ -10,7 +10,7 @@ export let SearchComponent = {
     <input type="text"
            class="form-control"
            id="name"
-           ng-model="$ctrl.contacts.search"
+           ng-model="$ctrl.search"
            ng-model-options="{ debounce: 300 }"
            placeholder="Search name..."
     />
@@ -18,7 +18,7 @@ export let SearchComponent = {
 
   <div class="form-group">
     <select class="form-control"
-            ng-model="$ctrl.contacts.sorting">
+            ng-model="$ctrl.sorting">
       <option value="name">Name</option>
       <option value="email">Email</option>
     </select>
@@ -26,7 +26,7 @@ export let SearchComponent = {
 
   <div class="form-group">
     <select class="form-control"
-            ng-model="$ctrl.contacts.ordering">
+            ng-model="$ctrl.ordering">
       <option value="ASC">ASC</option>
       <option value="DESC">DESC</option>
     </select>
@@ -36,9 +36,28 @@ export let SearchComponent = {
   bindings: {},
   controller: class SearchController {
     private contacts = null;
+    private $scope;
+    private search: string;
+    private ordering: string;
+    private sorting: string;
 
-    constructor(ContactService) {
+    constructor($scope, ContactService) {
       this.contacts = ContactService;
+      this.$scope = $scope;
+      this.watchFilters();
+    }
+
+    watchFilters() {
+      this.$scope.$watch(() => {
+        return this.search + this.ordering + this.sorting;
+      }, (newVal) => {
+        if (angular.isDefined(newVal)) {
+          this.contacts.search = this.search;
+          this.contacts.ordering = this.ordering;
+          this.contacts.sorting = this.sorting;
+          this.contacts.doSearch();
+        }
+      });
     }
   }
 };

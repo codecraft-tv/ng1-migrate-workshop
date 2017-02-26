@@ -1,5 +1,12 @@
 import * as angular from 'angular';
+import {Injectable} from "@angular/core";
+import {Http, URLSearchParams} from "@angular/http";
+import {downgradeInjectable} from '@angular/upgrade/static';
+import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/do';
 
+// @Injectable()
 export class ContactService {
   private Contact;
   private $rootScope;
@@ -22,9 +29,7 @@ export class ContactService {
     this.$rootScope = $rootScope;
     this.$q = $q;
     this.toaster = toaster;
-
     this.loadContacts();
-    this.watchFilters();
   }
 
   getPerson(email) {
@@ -116,15 +121,7 @@ export class ContactService {
     return d.promise;
   };
 
-  watchFilters() {
-    this.$rootScope.$watch(() => {
-      return this.search + this.ordering + this.sorting;
-    }, (newVal) => {
-      if (angular.isDefined(newVal)) {
-        this.doSearch();
-      }
-    });
-  }
+
 
 }
 
