@@ -24,9 +24,8 @@ export class ContactService {
   private ordering = 'ASC';
 
 
-  constructor(Contact, $rootScope, $q, toaster) {
+  constructor(Contact, $q, toaster) {
     this.Contact = Contact;
-    this.$rootScope = $rootScope;
     this.$q = $q;
     this.toaster = toaster;
     this.loadContacts();
@@ -120,8 +119,6 @@ export class ContactService {
     });
     return d.promise;
   };
-
-
 
 }
 
