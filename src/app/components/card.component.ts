@@ -30,7 +30,7 @@ let CardComponent = {
 
 					<button type="button"
 					        class="btn btn-default btn-sm"
-							    ui-sref="edit({email:user.email})">
+							    ui-sref="edit({email:$ctrl.user.email})">
 						<i class="fa fa-pencil"></i>&nbsp;Edit
 					</button >
 

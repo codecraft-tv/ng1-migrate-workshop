@@ -1,19 +1,10 @@
-import 'angular';
-import 'angular-resource';
-import 'angular-animate';
-import 'ng-infinite-scroll';
-import 'angular-spinner';
-import 'angular-auto-validate/dist/jcs-auto-validate';
-import 'angular-ladda';
-import 'angular-strap';
-import 'angularjs-toaster';
-import 'angular-ui-router';
+import './polyfills.ts';
 import './app';
 import "./services";
 import "./filters";
 import "./components";
 import './app.routes';
-import './polyfills.ts';
+
 
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
@@ -37,3 +28,4 @@ platformBrowserDynamic().bootstrapModule(AppModule).then(platformRef => {
   const upgrade = platformRef.injector.get(UpgradeModule) as UpgradeModule;
   upgrade.bootstrap(document.body, ['codecraft']);
 });
+
