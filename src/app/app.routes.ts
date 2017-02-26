@@ -17,7 +17,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         url: "/edit/:email",
         views: {
           'main': {
-            template: '<person-edit></person-edit>'
+            template: `<person-edit mode="'Edit'"></person-edit>`
           }
         }
       })
@@ -25,7 +25,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         url: "/create",
         views: {
           'main': {
-            template: '<person-create></person-create>'
+            template: `<person-edit mode="'Create'"></person-edit>`
           }
         }
       });
