@@ -55,8 +55,8 @@ export class ContactService {
       };
 
       this.Contact.query(params).then((res) => {
-        console.log(res.data);
-        angular.forEach(res.data,  (person) => {
+        console.log(res);
+        angular.forEach(res, (person) => {
           this.persons.push(person);
         });
         if (!res.data) {
