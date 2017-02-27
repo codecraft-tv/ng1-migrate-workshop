@@ -21,10 +21,6 @@ export class Contact {
     let search = Contact.toURLSearchParams(params);
     return this.http.get(this.apiRoot, {search})
         .map(res => res.json())
-        .do( _ => {
-          console.log(_);
-          debugger;
-        })
         .toPromise();
   }
 

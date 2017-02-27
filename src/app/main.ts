@@ -11,10 +11,11 @@ import {HttpModule} from '@angular/http';
 import {BrowserModule} from '@angular/platform-browser';
 import {UpgradeModule} from '@angular/upgrade/static';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import {CardComponent} from "./components/card.component";
 import {Contact} from "./services/contact.resource";
-
 import {toasterServiceProvider} from "./ajs-upgraded-providers"
 import {ContactService} from "./services/contact.service";
+import {DefaultImagePipe} from "./pipes/default-image.pipe";
 
 @NgModule({
   imports: [
@@ -22,11 +23,19 @@ import {ContactService} from "./services/contact.service";
     UpgradeModule,
     HttpModule
   ],
+  declarations: [
+    CardComponent,
+    DefaultImagePipe
+  ],
+  entryComponents: [
+    CardComponent
+  ],
   providers: [
     Contact,
     ContactService,
     toasterServiceProvider
-  ]
+  ],
+
 })
 export class AppModule {
   // Override Angular 2 bootstrap so it doesn't do anything
