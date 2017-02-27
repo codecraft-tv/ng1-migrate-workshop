@@ -92,21 +92,6 @@
       "favorite": false
     },
     {
-      "id": 674,
-      "createdTs": "2016-12-19T19:43:24.993090Z",
-      "updatedTs": "2016-12-19T19:43:24.993123Z",
-      "name": "Era Satterfield PhD",
-      "email": "carmine@milton.biz",
-      "sex": "M",
-      "birthdate": "1987-06-23T19:46:12.992692Z",
-      "phonenumber": "1-10510-1104-3789",
-      "address": "352 Christiansen Plain",
-      "city": "Heidenreichshire",
-      "country": "Northern Ireland",
-      "photo": "https://randomuser.me/api/portraits/men/17.jpg",
-      "favorite": false
-    },
-    {
       "id": 663,
       "createdTs": "2016-12-19T19:43:24.970635Z",
       "updatedTs": "2016-12-19T19:43:24.970675Z",

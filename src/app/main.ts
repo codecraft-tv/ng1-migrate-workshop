@@ -13,6 +13,9 @@ import {UpgradeModule} from '@angular/upgrade/static';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {Contact} from "./services/contact.resource";
 
+import {toasterServiceProvider} from "./ajs-upgraded-providers"
+import {ContactService} from "./services/contact.service";
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -20,7 +23,9 @@ import {Contact} from "./services/contact.resource";
     HttpModule
   ],
   providers: [
-      Contact
+    Contact,
+    ContactService,
+    toasterServiceProvider
   ]
 })
 export class AppModule {

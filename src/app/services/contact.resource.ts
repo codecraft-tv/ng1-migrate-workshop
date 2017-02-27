@@ -19,7 +19,7 @@ export class Contact {
     return search;
   }
 
-  query(params: {string: string}) {
+  query(params?) {
     let search = Contact.toURLSearchParams(params);
     return this.http.get(this.apiRoot, {search})
         .map(res => res.json())
@@ -30,7 +30,7 @@ export class Contact {
         .toPromise();
   }
 
-  get(id, params?: {string: string}) {
+  get(id, params?) {
     let search = Contact.toURLSearchParams(params);
     return this.http.get(this.apiRoot + '/' + id, {search})
         .map(res => res.json())
