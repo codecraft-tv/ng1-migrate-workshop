@@ -1,22 +1,6 @@
 {
   "contacts": [
     {
-      "id": 702,
-      "createdTs": "2016-12-19T19:43:25.045023Z",
-      "updatedTs": "2016-12-19T19:43:25.045058Z",
-      "name": "Dock Gislason",
-      "email": "annabelle@sofia.ca",
-      "sex": "M",
-      "birthdate": "1989-06-09T06:37:49.044568Z",
-      "phonenumber": "1-408-128-1614 x238",
-      "address": "943 Johnny Summit",
-      "city": "Runolfsdottirside",
-      "country": "Northern Ireland",
-      "photo": "https://randomuser.me/api/portraits/women/45.jpg",
-      "favorite": false,
-      "$$hashKey": "object:12"
-    },
-    {
       "id": 658,
       "createdTs": "2016-12-19T19:43:24.960599Z",
       "updatedTs": "2016-12-19T19:43:24.960637Z",

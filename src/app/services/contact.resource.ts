@@ -1,7 +1,5 @@
-import * as angular from 'angular';
 import {Injectable} from "@angular/core";
 import {Http, URLSearchParams} from "@angular/http";
-import {downgradeInjectable} from '@angular/upgrade/static';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
@@ -56,7 +54,3 @@ export class Contact {
   }
 
 }
-
-angular
-    .module('codecraft')
-    .factory('Contact', downgradeInjectable(Contact));
