@@ -16,12 +16,14 @@ import {Contact} from "./services/contact.resource";
 import {toasterServiceProvider} from "./ajs-upgraded-providers"
 import {ContactService} from "./services/contact.service";
 import {DefaultImagePipe} from "./pipes/default-image.pipe";
+import {LaddaModule} from "angular2-ladda/module/module";
 
 @NgModule({
   imports: [
     BrowserModule,
     UpgradeModule,
-    HttpModule
+    HttpModule,
+    LaddaModule
   ],
   declarations: [
     CardComponent,

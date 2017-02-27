@@ -1,21 +1,6 @@
 {
   "contacts": [
     {
-      "id": 658,
-      "createdTs": "2016-12-19T19:43:24.960599Z",
-      "updatedTs": "2016-12-19T19:43:24.960637Z",
-      "name": "Domingo White",
-      "email": "jaron.shields@angie.biz",
-      "sex": "M",
-      "birthdate": "1985-11-01T06:59:06.960092Z",
-      "phonenumber": "(498)2105-4380",
-      "address": "258 Hank Brooks",
-      "city": "West Lilliana",
-      "country": "England",
-      "photo": "https://randomuser.me/api/portraits/men/1.jpg",
-      "favorite": false
-    },
-    {
       "id": 700,
       "createdTs": "2016-12-19T19:43:25.041720Z",
       "updatedTs": "2016-12-19T19:43:25.041757Z",

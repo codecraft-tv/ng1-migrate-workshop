@@ -36,7 +36,7 @@ import {ContactService} from "../services/contact.service";
         </a>
 
         <a class="btn btn-danger btn-sm"
-           ladda="isDeleting"
+           [ladda]="isDeleting"
            (click)="deleteUser()">
           <i class="fa fa-trash"></i>
           &nbsp;Delete
