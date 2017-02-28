@@ -1,7 +1,7 @@
-import * as angular from 'angular';
+// import * as angular from 'angular';
 import {Component, ElementRef, AfterViewInit} from "@angular/core";
 import {Input} from "@angular/core/src/metadata/directives";
-import {downgradeComponent} from "@angular/upgrade/src/aot/downgrade_component";
+// import {downgradeComponent} from "@angular/upgrade/src/aot/downgrade_component";
 import {ViewChild} from "@angular/core";
 
 import 'script-loader!spin.js';
@@ -34,10 +34,10 @@ export class SpinnerComponent implements AfterViewInit {
   }
 }
 
-
-angular
-    .module('codecraft')
-    .directive('ccSpinner', downgradeComponent({
-      component: SpinnerComponent,
-      inputs: ['isLoading', 'message']
-    }) as angular.IDirectiveFactory);
+//
+// angular
+//     .module('codecraft')
+//     .directive('ccSpinner', downgradeComponent({
+//       component: SpinnerComponent,
+//       inputs: ['isLoading', 'message']
+//     }) as angular.IDirectiveFactory);

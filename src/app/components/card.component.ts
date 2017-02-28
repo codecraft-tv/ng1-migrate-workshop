@@ -1,6 +1,6 @@
-import * as angular from 'angular';
+// import * as angular from 'angular';
 import {Input, Component} from "@angular/core";
-import {downgradeComponent} from "@angular/upgrade/static";
+// import {downgradeComponent} from "@angular/upgrade/static";
 import {ContactService} from "../services/contact.service";
 
 @Component({
@@ -65,9 +65,9 @@ export class CardComponent {
 }
 
 
-angular
-    .module('codecraft')
-    .directive('ccCard', downgradeComponent({
-      component: CardComponent,
-      inputs: ['user']
-    }) as angular.IDirectiveFactory);
+// angular
+//     .module('codecraft')
+//     .directive('ccCard', downgradeComponent({
+//       component: CardComponent,
+//       inputs: ['user']
+//     }) as angular.IDirectiveFactory);
