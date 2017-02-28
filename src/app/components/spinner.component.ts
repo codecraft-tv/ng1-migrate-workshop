@@ -32,6 +32,7 @@ export class SpinnerComponent implements AfterViewInit {
     let spinner = new Spinner({radius: 8, width: 5, length: 3, lines: 9});
     spinner.spin(this.spinnerEl.nativeElement)
   }
+}
 
 
 angular
