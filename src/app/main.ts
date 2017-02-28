@@ -18,6 +18,7 @@ import {toasterServiceProvider} from "./ajs-upgraded-providers"
 import {ContactService} from "./services/contact.service";
 import {DefaultImagePipe} from "./pipes/default-image.pipe";
 import {LaddaModule} from "angular2-ladda/module/module";
+import {PersonListComponent} from "./components/person-list.component";
 
 @NgModule({
   imports: [
@@ -29,11 +30,13 @@ import {LaddaModule} from "angular2-ladda/module/module";
   declarations: [
     CardComponent,
     SpinnerComponent,
+    PersonListComponent,
     DefaultImagePipe
   ],
   entryComponents: [
     CardComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    PersonListComponent
   ],
   providers: [
     Contact,
