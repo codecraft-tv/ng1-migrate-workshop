@@ -19,6 +19,7 @@
     "@angular/platform-browser-dynamic": "^2.4.8",
     "@angular/router": "^3.4.8",
     "@angular/upgrade": "^2.4.8",
+    "@types/spin.js": "^2.3.0",
     "angular": "^1.6.2",
     "angular-animate": "^1.6.2",
     "angular-auto-validate": "^1.19.0",
@@ -38,6 +39,7 @@
     "ng-infinite-scroll": "1.2.1",
     "reflect-metadata": "^0.1.9",
     "rxjs": "^5.0.1",
+    "spin.js": "^2.3.2",
     "webpack": "^2.2.1",
     "zone.js": "^0.7.4"
   },
@@ -45,6 +47,7 @@
     "@types/angular": "^1.6.7",
     "json-server": "^0.9.5",
     "rimraf": "^2.6.0",
+    "script-loader": "^0.7.0",
     "ts-loader": "^2.0.1",
     "typescript": "^2.2.1"
   }

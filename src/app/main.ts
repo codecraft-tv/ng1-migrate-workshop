@@ -12,6 +12,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {UpgradeModule} from '@angular/upgrade/static';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {CardComponent} from "./components/card.component";
+import {SpinnerComponent} from "./components/spinner.component"
 import {Contact} from "./services/contact.resource";
 import {toasterServiceProvider} from "./ajs-upgraded-providers"
 import {ContactService} from "./services/contact.service";
@@ -27,10 +28,12 @@ import {LaddaModule} from "angular2-ladda/module/module";
   ],
   declarations: [
     CardComponent,
+    SpinnerComponent,
     DefaultImagePipe
   ],
   entryComponents: [
-    CardComponent
+    CardComponent,
+    SpinnerComponent
   ],
   providers: [
     Contact,
