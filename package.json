@@ -30,6 +30,7 @@
     "angular-ui-router": "^1.0.0-beta.3",
     "angular2-infinite-scroll": "^0.3.3",
     "angular2-ladda": "^1.1.1",
+    "angular2-toaster": "^2.0.0",
     "angularjs-toaster": "^2.1.0",
     "bootstrap": "3.3.2",
     "bootstrap-additions": "0.3.1",

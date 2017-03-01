@@ -13,7 +13,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {UpgradeModule} from '@angular/upgrade/static';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {InfiniteScrollModule} from 'angular2-infinite-scroll';
-
+import {ToasterModule, ToasterService} from 'angular2-toaster';
 
 import {CardComponent} from "./components/card.component";
 import {SpinnerComponent} from "./components/spinner.component"
@@ -29,7 +29,7 @@ import {LaddaModule} from "angular2-ladda/module/module";
 import {PersonListComponent} from "./components/person-list.component";
 import {PersonEditComponent} from "./components/person-edit.component";
 import {SearchComponent} from "./components/search.component";
-
+import {AppRootComponent} from "./components/app-root.component"
 
 @NgModule({
   imports: [
@@ -39,7 +39,8 @@ import {SearchComponent} from "./components/search.component";
     LaddaModule,
     FormsModule,
     ReactiveFormsModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    ToasterModule
   ],
   declarations: [
     CardComponent,
@@ -47,19 +48,21 @@ import {SearchComponent} from "./components/search.component";
     PersonListComponent,
     DefaultImagePipe,
     PersonEditComponent,
-    SearchComponent
+    SearchComponent,
+    AppRootComponent
   ],
   entryComponents: [
     CardComponent,
     SpinnerComponent,
     PersonListComponent,
     PersonEditComponent,
-    SearchComponent
+    SearchComponent,
+    AppRootComponent
   ],
   providers: [
     Contact,
     ContactService,
-    toasterServiceProvider,
+    // toasterServiceProvider,
     uiRouterStateParamsProvider,
     uiRouterStateProvider
   ],
