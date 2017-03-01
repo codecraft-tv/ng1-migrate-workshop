@@ -1,26 +1,27 @@
 import * as angular from 'angular';
+import {Input, Component} from "@angular/core";
+import {downgradeComponent} from "@angular/upgrade/static";
+import {ContactService} from "../services/contact.service";
+import {
+    FormGroup,
+    FormControl
+} from '@angular/forms';
 
-
-export let SearchComponent = {
+@Component({
   selector: 'search',
   template: `
-<form class="navbar-form navbar-left">
+<form class="navbar-form navbar-left" [formGroup]="myform">
 
   <div class="form-group">
     <input type="text"
            class="form-control"
-           ng-change="$ctrl.contacts.doSearch()"
-           id="name"
-           ng-model="$ctrl.contacts.search"
-           ng-model-options="{ debounce: 300 }"
-           placeholder="Search name..."
-    />
+           formControlName="search"
+           placeholder="Search name..."/>
   </div>
 
   <div class="form-group">
     <select class="form-control"
-            ng-change="$ctrl.contacts.doSearch()"
-            ng-model="$ctrl.contacts.sorting">
+            formControlName="sorting">
       <option value="name">Name</option>
       <option value="email">Email</option>
     </select>
@@ -28,25 +29,44 @@ export let SearchComponent = {
 
   <div class="form-group">
     <select class="form-control"
-            ng-change="$ctrl.contacts.doSearch()"
-            ng-model="$ctrl.contacts.ordering">
+            formControlName="ordering">
       <option value="ASC">ASC</option>
       <option value="DESC">DESC</option>
     </select>
   </div>
 </form>
-`,
-  bindings: {},
-  controller: class SearchController {
-    private contacts = null;
+`
+})
+export class SearchComponent {
 
-    constructor(ContactService) {
-      this.contacts = ContactService;
-    }
+  private myform: FormGroup;
+
+  constructor(private contacts: ContactService) {
+    this.myform = new FormGroup({
+      search: new FormControl(),
+      sorting: new FormControl('name'),
+      ordering: new FormControl('ASC')
+    });
   }
-};
+
+  ngOnInit() {
+    this.myform
+        .valueChanges
+        .debounceTime(400)
+        .distinctUntilChanged()
+        .do(console.log)
+        .subscribe(({sorting, ordering, search}) => {
+          this.contacts.sorting = sorting;
+          this.contacts.ordering = ordering;
+          this.contacts.search = search;
+          this.contacts.doSearch();
+        });
+  }
+}
 
 
 angular
     .module('codecraft')
-    .component(SearchComponent.selector, SearchComponent);
+    .directive('search', downgradeComponent({
+      component: SearchComponent
+    }) as angular.IDirectiveFactory);

@@ -9,15 +9,15 @@ import {Contact} from "./contact.resource";
 
 @Injectable()
 export class ContactService {
-  private page = 1;
-  private hasMore = true;
-  private isLoading = false;
-  private isSaving = false;
-  private isDeleting = false;
-  private persons = [];
-  private search = null;
-  private sorting = 'name';
-  private ordering = 'ASC';
+  page = 1;
+  hasMore = true;
+  isLoading = false;
+  isSaving = false;
+  isDeleting = false;
+  persons = [];
+  search = null;
+  sorting = 'name';
+  ordering = 'ASC';
 
   constructor(private contact: Contact, @Inject(Toaster) private toaster) {
     this.loadContacts();
