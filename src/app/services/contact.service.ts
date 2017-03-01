@@ -55,7 +55,7 @@ export class ContactService {
         angular.forEach(res, (person) => {
           this.persons.push(person);
         });
-        if (!res.data) {
+        if (!res) {
           this.hasMore = false;
         }
         this.isLoading = false;

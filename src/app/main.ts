@@ -12,6 +12,9 @@ import {FormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
 import {UpgradeModule} from '@angular/upgrade/static';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import {InfiniteScrollModule} from 'angular2-infinite-scroll';
+
+
 import {CardComponent} from "./components/card.component";
 import {SpinnerComponent} from "./components/spinner.component"
 import {Contact} from "./services/contact.resource";
@@ -26,13 +29,15 @@ import {LaddaModule} from "angular2-ladda/module/module";
 import {PersonListComponent} from "./components/person-list.component";
 import {PersonEditComponent} from "./components/person-edit.component";
 
+
 @NgModule({
   imports: [
     BrowserModule,
     UpgradeModule,
     HttpModule,
     LaddaModule,
-    FormsModule
+    FormsModule,
+    InfiniteScrollModule
   ],
   declarations: [
     CardComponent,

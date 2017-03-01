@@ -8,10 +8,11 @@ import {ContactService} from "../services/contact.service";
   template: `<div class="col-md-12">
 
   <div class="row"
-       infinite-scroll="contacts.loadMore()"
-       infinite-scroll-immediate-check="false"
-       infinite-scroll-distance="1"
-  >
+      infinite-scroll
+      [infiniteScrollDistance]="2"
+      [immediateCheck]="false"
+      [infiniteScrollThrottle]="100"
+      (scrolled)="loadMore()" >
 
     <ccCard *ngFor="let person of contacts.persons"
             [user]="person">
@@ -32,6 +33,11 @@ import {ContactService} from "../services/contact.service";
 })
 export class PersonListComponent {
   constructor(private contacts: ContactService) {
+  }
+
+  loadMore() {
+    console.log("loadMore");
+    this.contacts.loadMore();
   }
 }
 
