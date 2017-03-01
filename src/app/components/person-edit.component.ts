@@ -1,42 +1,47 @@
 import * as angular from 'angular';
+import {Input, Component, Inject} from "@angular/core";
+import {downgradeComponent} from "@angular/upgrade/static";
+import {ContactService} from "../services/contact.service";
+import {
+    UIRouterStateParams,
+    UIRouterState
+} from "../ajs-upgraded-providers"
 
-export let PersonEditComponent = {
+@Component({
   selector: 'personEdit',
-  templateUrl: 'app/components/person-edit.component.html',
-  bindings: {
-    'mode' : '='
-  },
-  controller: class PersonEditController {
-    private contacts = null;
-    private $state = null;
-    private $stateParams = null;
+  templateUrl: 'app/components/person-edit.component.html'
+})
+export class PersonEditComponent {
+  @Input()
+  private mode: string;
 
+  private person: any;
 
-    constructor($stateParams, $state, ContactService) {
-      this.$stateParams = $stateParams;
-      this.$state = $state;
-      this.contacts = ContactService;
-      this.contacts.selectedPerson = this.contacts.getPerson(this.$stateParams.email);
-    }
-
-    save() {
-      this.contacts.updateContact(this.contacts.selectedPerson)
-          .then(() => {
-            this.$state.go("list");
-          })
-    }
-
-    remove() {
-      this.contacts.removeContact(this.contacts.selectedPerson)
-          .then(() => {
-            this.$state.go("list");
-          })
-    }
-
+  constructor(@Inject(UIRouterStateParams) private $stateParams,
+              @Inject(UIRouterState) private $state,
+              private contacts: ContactService) {
+    this.person = this.contacts.getPerson(this.$stateParams.email);
   }
-};
+
+  save() {
+    this.contacts.updateContact(this.person)
+        .then(() => {
+          this.$state.go("list");
+        })
+  }
+
+  remove() {
+    this.contacts.removeContact(this.person)
+        .then(() => {
+          this.$state.go("list");
+        })
+  }
+}
 
 
 angular
     .module('codecraft')
-    .component(PersonEditComponent.selector, PersonEditComponent);
+    .directive('personEdit', downgradeComponent({
+      inputs: ['mode'],
+      component: PersonEditComponent
+    }) as angular.IDirectiveFactory);

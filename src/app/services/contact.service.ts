@@ -14,12 +14,10 @@ export class ContactService {
   private isLoading = false;
   private isSaving = false;
   private isDeleting = false;
-  private selectedPerson = null;
   private persons = [];
   private search = null;
   private sorting = 'name';
   private ordering = 'ASC';
-
 
   constructor(private contact: Contact, @Inject(Toaster) private toaster) {
     this.loadContacts();
@@ -32,6 +30,7 @@ export class ContactService {
       }
     }
   }
+
 
   doSearch() {
     this.hasMore = true;
@@ -90,7 +89,6 @@ export class ContactService {
         this.isDeleting = false;
         var index = this.persons.indexOf(person);
         this.persons.splice(index, 1);
-        this.selectedPerson = null;
         this.toaster.pop('success', 'Deleted ' + person.name);
         resolve()
       });
@@ -102,7 +100,6 @@ export class ContactService {
       this.isSaving = true;
       this.contact.save(person).then(() => {
         this.isSaving = false;
-        this.selectedPerson = null;
         this.hasMore = true;
         this.page = 1;
         this.persons = [];
