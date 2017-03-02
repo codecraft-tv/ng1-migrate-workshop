@@ -1,6 +1,4 @@
-import * as angular from 'angular';
-import {Input, Component} from "@angular/core";
-import {downgradeComponent} from "@angular/upgrade/static";
+import {Component} from "@angular/core";
 
 @Component({
   selector: 'app-root',
@@ -13,16 +11,15 @@ import {downgradeComponent} from "@angular/upgrade/static";
       </a>
     </div>
 
-    <div ui-view="search">
-    </div>
+    <router-outlet name="header"></router-outlet>
 
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li ui-sref-active="active">
-          <a ui-sref="list">Search</a>
+        <li [routerLinkActive]="['active']">
+          <a [routerLink]="['']">Search</a>
         </li>
-        <li ui-sref-active="active">
-          <a ui-sref="create">Create</a>
+        <li [routerLinkActive]="['active']">
+          <a [routerLink]="[{outlets: {primary: 'create', header: null}}]">Create</a>
         </li>
       </ul>
     </div>
@@ -36,8 +33,7 @@ import {downgradeComponent} from "@angular/upgrade/static";
 
   <div class="row">
 
-    <div ui-view="main">
-    </div>
+    <router-outlet></router-outlet>
 
   </div>
 </div>
@@ -46,9 +42,3 @@ import {downgradeComponent} from "@angular/upgrade/static";
 export class AppRootComponent {
 
 }
-
-angular
-    .module('codecraft')
-    .directive('appRoot', downgradeComponent({
-      component: AppRootComponent
-    }) as angular.IDirectiveFactory);

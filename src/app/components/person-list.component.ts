@@ -36,7 +36,6 @@ export class PersonListComponent {
   }
 
   loadMore() {
-    console.log("loadMore");
     this.contacts.loadMore();
   }
 }

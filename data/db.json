@@ -1,21 +1,6 @@
 {
   "contacts": [
     {
-      "id": 679,
-      "createdTs": "2016-12-19T19:43:25.002355Z",
-      "updatedTs": "2016-12-19T19:43:25.002398Z",
-      "name": "Emilio Christiansen",
-      "email": "kennedy@lorna.org",
-      "sex": "F",
-      "birthdate": "1990-10-02T22:36:01.001872Z",
-      "phonenumber": "1-671-879-101003",
-      "address": "721 Daugherty Corner",
-      "city": "Russelmouth",
-      "country": "Wales",
-      "photo": "https://randomuser.me/api/portraits/women/22.jpg",
-      "favorite": false
-    },
-    {
       "id": 663,
       "createdTs": "2016-12-19T19:43:24.970635Z",
       "updatedTs": "2016-12-19T19:43:24.970675Z",
@@ -554,6 +539,9 @@
       "country": "Wales",
       "photo": "https://randomuser.me/api/portraits/women/19.jpg",
       "favorite": false
+    },
+    {
+      "id": 705
     }
   ]
 }

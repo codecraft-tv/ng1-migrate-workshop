@@ -12,6 +12,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
 import {UpgradeModule} from '@angular/upgrade/static';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import {RouterModule} from "@angular/router";
+
+
 import {InfiniteScrollModule} from 'angular2-infinite-scroll';
 import {ToasterModule, ToasterService} from 'angular2-toaster';
 
@@ -31,6 +34,9 @@ import {PersonEditComponent} from "./components/person-edit.component";
 import {SearchComponent} from "./components/search.component";
 import {AppRootComponent} from "./components/app-root.component"
 
+import {routes} from './app.routes'
+import {PersonCreateComponent} from "./components/person-create.component";
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -40,12 +46,14 @@ import {AppRootComponent} from "./components/app-root.component"
     FormsModule,
     ReactiveFormsModule,
     InfiniteScrollModule,
-    ToasterModule
+    ToasterModule,
+    RouterModule.forRoot(routes, {useHash: true})
   ],
   declarations: [
     CardComponent,
     SpinnerComponent,
     PersonListComponent,
+    PersonCreateComponent,
     DefaultImagePipe,
     PersonEditComponent,
     SearchComponent,
@@ -66,17 +74,25 @@ import {AppRootComponent} from "./components/app-root.component"
     uiRouterStateParamsProvider,
     uiRouterStateProvider
   ],
+  bootstrap: [
+    AppRootComponent
+  ]
 
 })
 export class AppModule {
   // Override Angular 2 bootstrap so it doesn't do anything
-  ngDoBootstrap() {
-  }
+  // ngDoBootstrap() {
+  // }
 }
 
 // Bootstrap using the UpgradeModule
-platformBrowserDynamic().bootstrapModule(AppModule).then(platformRef => {
-  const upgrade = platformRef.injector.get(UpgradeModule) as UpgradeModule;
-  upgrade.bootstrap(document.body, ['codecraft']);
-});
+// platformBrowserDynamic().bootstrapModule(AppModule).then(platformRef => {
+//   const upgrade = platformRef.injector.get(UpgradeModule) as UpgradeModule;
+//   upgrade.bootstrap(document.body, ['codecraft']);
+// });
 
+platformBrowserDynamic().bootstrapModule(AppModule).then(platformRef => {
+  // const upgrade = platformRef.injector.get(UpgradeModule) as UpgradeModule;
+  // upgrade.bootstrap(document.body, ['codecraft']);
+  console.log("Bootstrapped");
+});

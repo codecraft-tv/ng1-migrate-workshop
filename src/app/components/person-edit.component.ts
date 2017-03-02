@@ -6,6 +6,7 @@ import {
     UIRouterStateParams,
     UIRouterState
 } from "../ajs-upgraded-providers"
+import {Router, ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'personEdit',
@@ -15,25 +16,30 @@ export class PersonEditComponent {
   @Input()
   private mode: string;
 
-  private person: any;
+  private person: any = {};
 
-  constructor(@Inject(UIRouterStateParams) private $stateParams,
-              @Inject(UIRouterState) private $state,
-              private contacts: ContactService) {
-    this.person = this.contacts.getPerson(this.$stateParams.email);
+  constructor(private contacts: ContactService,
+              private route: ActivatedRoute,
+              private router: Router) {
+    this.route.params.subscribe(params => {
+      console.log(params);
+      if (params['email']) {
+        this.person = this.contacts.getPerson(params['email']);
+      }
+    });
   }
 
   save() {
     this.contacts.updateContact(this.person)
         .then(() => {
-          this.$state.go("list");
+          this.router.navigate(['']);
         })
   }
 
   remove() {
     this.contacts.removeContact(this.person)
         .then(() => {
-          this.$state.go("list");
+          this.router.navigate(['']);
         })
   }
 }
