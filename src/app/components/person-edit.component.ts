@@ -38,9 +38,7 @@ export let PersonEditComponent = {
 </div > 
 `,
   bindings: {},
-  controller: class PersonCreateController {
-
-    private mode: string = '';
+  controller: class PersonEditController {
     private contacts = null;
     private $state = null;
     private $stateParams = null;
@@ -48,7 +46,6 @@ export let PersonEditComponent = {
     constructor($stateParams, $state, ContactService) {
       this.$stateParams = $stateParams;
       this.$state = $state;
-      this.mode = "Edit";
       this.contacts = ContactService;
       this.contacts.selectedPerson = this.contacts.getPerson(this.$stateParams.email);
     }
