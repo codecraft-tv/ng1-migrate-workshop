@@ -4,7 +4,7 @@
 		<input type="text"
 		       class="form-control"
 		       name="name"
-		       ng-model="contacts.selectedPerson.name"
+		       ng-model="$ctrl.contacts.selectedPerson.name"
 		       required />
 	</div >
 </div >
@@ -14,7 +14,7 @@
 		<input type="email"
 		       name="email"
 		       class="form-control"
-		       ng-model="contacts.selectedPerson.email"
+		       ng-model="$ctrl.contacts.selectedPerson.email"
 		       required />
 	</div >
 </div >
@@ -24,7 +24,7 @@
 		<input type="text"
 		       class="form-control"
 		       name="photo"
-		       ng-model="contacts.selectedPerson.photo"
+		       ng-model="$ctrl.contacts.selectedPerson.photo"
 				/>
 	</div >
 </div >
@@ -34,7 +34,7 @@
 
 		<select name="sex"
 		        class="form-control"
-		        ng-model="contacts.selectedPerson.sex"
+		        ng-model="$ctrl.contacts.selectedPerson.sex"
 		        id="" >
 			<option value="M" >Male</option >
 			<option value="F" >Female</option >
@@ -47,7 +47,7 @@
 		<input type="text"
 		       name="bday"
 		       class="form-control"
-		       ng-model="contacts.selectedPerson.birthdate "
+		       ng-model="$ctrl.contacts.selectedPerson.birthdate "
 		       bs-datepicker
 				/>
 	</div >
@@ -59,7 +59,7 @@
 		<input type="tel"
 		       name="phone"
 		       class="form-control"
-		       ng-model="contacts.selectedPerson.phonenumber"
+		       ng-model="$ctrl.contacts.selectedPerson.phonenumber"
 				/>
 	</div >
 
@@ -70,7 +70,7 @@
 		<input type="text"
 		       name="address"
 		       class="form-control"
-		       ng-model="contacts.selectedPerson.address"
+		       ng-model="$ctrl.contacts.selectedPerson.address"
 				/>
 	</div >
 
@@ -82,7 +82,7 @@
 		<input type="text"
 		       name="city"
 		       class="form-control"
-		       ng-model="contacts.selectedPerson.city"
+		       ng-model="$ctrl.contacts.selectedPerson.city"
 				/>
 	</div >
 
@@ -93,7 +93,7 @@
 		<input type="text"
 		       name="country"
 		       class="form-control"
-		       ng-model="contacts.selectedPerson.country"
+		       ng-model="$ctrl.contacts.selectedPerson.country"
 				/>
 	</div >
 

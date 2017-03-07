@@ -6,12 +6,10 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         url: "/",
         views: {
           'main': {
-            templateUrl: 'templates/list.html',
-            controller: 'PersonListController'
+            template: '<person-list></person-list>',
           },
           'search': {
-            templateUrl: 'templates/searchform.html',
-            controller: 'PersonListController'
+            template: '<search></search>',
           }
         }
       })
@@ -19,8 +17,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         url: "/edit/:email",
         views: {
           'main': {
-            templateUrl: 'templates/edit.html',
-            controller: 'PersonDetailController'
+            template: '<person-edit></person-edit>'
           }
         }
       })
@@ -28,8 +25,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         url: "/create",
         views: {
           'main': {
-            templateUrl: 'templates/edit.html',
-            controller: 'PersonCreateController'
+            template: '<person-create></person-create>'
           }
         }
       });
