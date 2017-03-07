@@ -8,7 +8,7 @@ import './app.routes';
 
 import {NgModule} from '@angular/core';
 import {HttpModule} from '@angular/http';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
 import {UpgradeModule} from '@angular/upgrade/static';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
@@ -28,6 +28,7 @@ import {DefaultImagePipe} from "./pipes/default-image.pipe";
 import {LaddaModule} from "angular2-ladda/module/module";
 import {PersonListComponent} from "./components/person-list.component";
 import {PersonEditComponent} from "./components/person-edit.component";
+import {SearchComponent} from "./components/search.component";
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import {PersonEditComponent} from "./components/person-edit.component";
     HttpModule,
     LaddaModule,
     FormsModule,
+    ReactiveFormsModule,
     InfiniteScrollModule
   ],
   declarations: [
@@ -44,13 +46,15 @@ import {PersonEditComponent} from "./components/person-edit.component";
     SpinnerComponent,
     PersonListComponent,
     DefaultImagePipe,
-    PersonEditComponent
+    PersonEditComponent,
+    SearchComponent
   ],
   entryComponents: [
     CardComponent,
     SpinnerComponent,
     PersonListComponent,
-    PersonEditComponent
+    PersonEditComponent,
+    SearchComponent
   ],
   providers: [
     Contact,
