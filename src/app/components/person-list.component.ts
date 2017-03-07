@@ -1,6 +1,4 @@
-import * as angular from 'angular';
-import {Input, Component} from "@angular/core";
-import {downgradeComponent} from "@angular/upgrade/static";
+import {Component} from "@angular/core";
 import {ContactService} from "../services/contact.service";
 
 @Component({
@@ -39,10 +37,3 @@ export class PersonListComponent {
     this.contacts.loadMore();
   }
 }
-
-
-angular
-    .module('codecraft')
-    .directive('personList', downgradeComponent({
-      component: PersonListComponent
-    }) as angular.IDirectiveFactory);

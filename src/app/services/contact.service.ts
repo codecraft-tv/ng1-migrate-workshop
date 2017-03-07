@@ -1,11 +1,9 @@
-import * as angular from 'angular';
-import {Injectable, Inject} from "@angular/core";
-import {downgradeInjectable} from '@angular/upgrade/static';
-import 'rxjs/add/operator/toPromise';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/do';
+import {Injectable} from "@angular/core";
+import "rxjs/add/operator/toPromise";
+import "rxjs/add/operator/map";
+import "rxjs/add/operator/do";
 import {Contact} from "./contact.resource";
-import {ToasterModule, ToasterService} from 'angular2-toaster';
+import {ToasterService} from "angular2-toaster";
 
 @Injectable()
 export class ContactService {
@@ -52,9 +50,9 @@ export class ContactService {
 
       this.contact.query(params).then((res) => {
         console.log(res);
-        angular.forEach(res, (person) => {
+        for (let person of res) {
           this.persons.push(person);
-        });
+        }
         if (!res) {
           this.hasMore = false;
         }
@@ -109,10 +107,4 @@ export class ContactService {
       });
     });
   };
-
 }
-
-
-angular
-    .module('codecraft')
-    .factory('ContactService', downgradeInjectable(ContactService));
