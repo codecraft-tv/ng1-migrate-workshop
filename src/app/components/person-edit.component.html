@@ -1,23 +1,24 @@
 <div class="col-md-8 col-md-offset-2">
   <form class="form-horizontal"
-        ng-submit="$ctrl.save()"
+        (ngSubmit)="save()"
         novalidate>
+
     <div class="panel panel-default">
       <div class="panel-heading">
 
-        {{$ctrl.mode}}
+        {{mode}}
 
         <div class="pull-right">
           <button class="btn btn-primary btn-sm"
-                  ladda="$ctrl.contacts.isSaving"
+                  [ladda]="contacts.isSaving"
                   type="submit">
             <span>Save</span>
           </button>
 
           <button class="btn btn-danger btn-sm"
-                  ladda="$ctrl.contacts.isDeleting"
-                  ng-if="$ctrl.mode === 'Edit'"
-                  ng-click="$ctrl.remove()">Delete
+                  [ladda]="contacts.isDeleting"
+                  *ngIf="mode === 'Edit'"
+                  (click)="remove()">Delete
           </button>
         </div>
         <div class="clearfix"></div>
@@ -31,7 +32,7 @@
             <input type="text"
                    class="form-control"
                    name="name"
-                   ng-model="$ctrl.contacts.selectedPerson.name"
+                   [(ngModel)]="person.name"
                    required />
           </div>
         </div>
@@ -41,7 +42,7 @@
             <input type="email"
                    name="email"
                    class="form-control"
-                   ng-model="$ctrl.contacts.selectedPerson.email"
+                   [(ngModel)]="person.email"
                    required />
           </div>
         </div>
@@ -51,7 +52,7 @@
             <input type="text"
                    class="form-control"
                    name="photo"
-                   ng-model="$ctrl.contacts.selectedPerson.photo"
+                   [(ngModel)]="person.photo"
             />
           </div>
         </div>
@@ -61,7 +62,7 @@
 
             <select name="sex"
                     class="form-control"
-                    ng-model="$ctrl.contacts.selectedPerson.sex"
+                    [(ngModel)]="person.sex"
                     id="">
               <option value="M">Male</option>
               <option value="F">Female</option>
@@ -74,7 +75,7 @@
             <input type="text"
                    name="bday"
                    class="form-control"
-                   ng-model="$ctrl.contacts.selectedPerson.birthdate "
+                   [(ngModel)]="person.birthdate "
                    bs-datepicker
             />
           </div>
@@ -86,7 +87,7 @@
             <input type="tel"
                    name="phone"
                    class="form-control"
-                   ng-model="$ctrl.contacts.selectedPerson.phonenumber"
+                   [(ngModel)]="person.phonenumber"
             />
           </div>
 
@@ -97,7 +98,7 @@
             <input type="text"
                    name="address"
                    class="form-control"
-                   ng-model="$ctrl.contacts.selectedPerson.address"
+                   [(ngModel)]="person.address"
             />
           </div>
 
@@ -109,7 +110,7 @@
             <input type="text"
                    name="city"
                    class="form-control"
-                   ng-model="$ctrl.contacts.selectedPerson.city"
+                   [(ngModel)]="person.city"
             />
           </div>
 
@@ -120,7 +121,7 @@
             <input type="text"
                    name="country"
                    class="form-control"
-                   ng-model="$ctrl.contacts.selectedPerson.country"
+                   [(ngModel)]="person.country"
             />
           </div>
 
