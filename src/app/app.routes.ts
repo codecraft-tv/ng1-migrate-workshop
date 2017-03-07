@@ -1,33 +1,35 @@
+import {app} from "./app";
+
 app.config(function ($stateProvider, $urlRouterProvider) {
   $stateProvider
       .state('list', {
-        url  : "/",
+        url: "/",
         views: {
-          'main'  : {
+          'main': {
             templateUrl: 'templates/list.html',
-            controller : 'PersonListController'
+            controller: 'PersonListController'
           },
           'search': {
             templateUrl: 'templates/searchform.html',
-            controller : 'PersonListController'
+            controller: 'PersonListController'
           }
         }
       })
       .state('edit', {
-        url  : "/edit/:email",
+        url: "/edit/:email",
         views: {
           'main': {
             templateUrl: 'templates/edit.html',
-            controller : 'PersonDetailController'
+            controller: 'PersonDetailController'
           }
         }
       })
       .state('create', {
-        url  : "/create",
+        url: "/create",
         views: {
           'main': {
             templateUrl: 'templates/edit.html',
-            controller : 'PersonCreateController'
+            controller: 'PersonCreateController'
           }
         }
       });
