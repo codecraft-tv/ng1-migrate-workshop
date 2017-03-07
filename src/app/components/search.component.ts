@@ -9,6 +9,7 @@ export let SearchComponent = {
   <div class="form-group">
     <input type="text"
            class="form-control"
+           ng-change="$ctrl.contacts.doSearch()"
            id="name"
            ng-model="$ctrl.contacts.search"
            ng-model-options="{ debounce: 300 }"
@@ -18,6 +19,7 @@ export let SearchComponent = {
 
   <div class="form-group">
     <select class="form-control"
+            ng-change="$ctrl.contacts.doSearch()"
             ng-model="$ctrl.contacts.sorting">
       <option value="name">Name</option>
       <option value="email">Email</option>
@@ -26,6 +28,7 @@ export let SearchComponent = {
 
   <div class="form-group">
     <select class="form-control"
+            ng-change="$ctrl.contacts.doSearch()"
             ng-model="$ctrl.contacts.ordering">
       <option value="ASC">ASC</option>
       <option value="DESC">DESC</option>

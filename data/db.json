@@ -1,51 +1,6 @@
 {
   "contacts": [
     {
-      "id": 697,
-      "createdTs": "2016-12-19T19:43:25.036704Z",
-      "updatedTs": "2016-12-19T19:43:25.036750Z",
-      "name": "Ashly O'Hara",
-      "email": "hilton_reichel@troy.net",
-      "sex": "F",
-      "birthdate": "1973-07-01T04:23:31.036240Z",
-      "phonenumber": "1-8106-122-6925",
-      "address": "1379 Zulauf Well",
-      "city": "Walkerborough",
-      "country": "Wales",
-      "photo": "https://randomuser.me/api/portraits/men/40.jpg",
-      "favorite": false
-    },
-    {
-      "id": 698,
-      "createdTs": "2016-12-19T19:43:25.038462Z",
-      "updatedTs": "2016-12-19T19:43:25.038499Z",
-      "name": "Delfina Anderson",
-      "email": "deanna_schmitt@zoey.tv",
-      "sex": "M",
-      "birthdate": "1985-02-01T06:30:41.037985Z",
-      "phonenumber": "(239)926-26103",
-      "address": "6319 Mariana Vista",
-      "city": "Lake Breana",
-      "country": "England",
-      "photo": "https://randomuser.me/api/portraits/men/41.jpg",
-      "favorite": false
-    },
-    {
-      "id": 702,
-      "createdTs": "2016-12-19T19:43:25.045023Z",
-      "updatedTs": "2016-12-19T19:43:25.045058Z",
-      "name": "Dock Gislason",
-      "email": "annabelle@sofia.ca",
-      "sex": "F",
-      "birthdate": "1989-06-09T06:37:49.044568Z",
-      "phonenumber": "1-408-128-1614 x238",
-      "address": "943 Johnny Summit",
-      "city": "Runolfsdottirside",
-      "country": "Northern Ireland",
-      "photo": "https://randomuser.me/api/portraits/women/45.jpg",
-      "favorite": false
-    },
-    {
       "id": 658,
       "createdTs": "2016-12-19T19:43:24.960599Z",
       "updatedTs": "2016-12-19T19:43:24.960637Z",
@@ -118,21 +73,6 @@
       "city": "McCluremouth",
       "country": "England",
       "photo": "https://randomuser.me/api/portraits/men/49.jpg",
-      "favorite": false
-    },
-    {
-      "id": 674,
-      "createdTs": "2016-12-19T19:43:24.993090Z",
-      "updatedTs": "2016-12-19T19:43:24.993123Z",
-      "name": "Era Satterfield PhD",
-      "email": "carmine@milton.biz",
-      "sex": "M",
-      "birthdate": "1987-06-23T19:46:12.992692Z",
-      "phonenumber": "1-10510-1104-3789",
-      "address": "352 Christiansen Plain",
-      "city": "Heidenreichshire",
-      "country": "Northern Ireland",
-      "photo": "https://randomuser.me/api/portraits/men/17.jpg",
       "favorite": false
     },
     {

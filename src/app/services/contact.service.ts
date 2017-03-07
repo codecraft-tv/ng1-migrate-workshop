@@ -1,10 +1,14 @@
 import * as angular from 'angular';
+import {Injectable, Inject} from "@angular/core";
+import {downgradeInjectable} from '@angular/upgrade/static';
+import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/do';
+import {Toaster} from "../ajs-upgraded-providers";
+import {Contact} from "./contact.resource";
 
+@Injectable()
 export class ContactService {
-  private Contact;
-  private $rootScope;
-  private $q;
-  private toaster;
   private page = 1;
   private hasMore = true;
   private isLoading = false;
@@ -17,18 +21,11 @@ export class ContactService {
   private ordering = 'ASC';
 
 
-  constructor(Contact, $rootScope, $q, toaster) {
-    this.Contact = Contact;
-    this.$rootScope = $rootScope;
-    this.$q = $q;
-    this.toaster = toaster;
-
+  constructor(private contact: Contact, @Inject(Toaster) private toaster) {
     this.loadContacts();
-    this.watchFilters();
   }
 
   getPerson(email) {
-    debugger;
     for (let person of this.persons) {
       if (person.email == email) {
         return person;
@@ -54,9 +51,9 @@ export class ContactService {
         'q': this.search
       };
 
-      this.Contact.query(params).then((res) => {
-        console.log(res.data);
-        angular.forEach(res.data,  (person) => {
+      this.contact.query(params).then((res) => {
+        console.log(res);
+        angular.forEach(res, (person) => {
           this.persons.push(person);
         });
         if (!res.data) {
@@ -76,59 +73,49 @@ export class ContactService {
   };
 
   updateContact(person) {
-    let d = this.$q.defer();
-    this.isSaving = true;
-    this.Contact.update(person).then(() => {
-      this.isSaving = false;
-      this.toaster.pop('success', 'Updated ' + person.name);
-      d.resolve()
+    return new Promise((resolve, reject) => {
+      this.isSaving = true;
+      this.contact.update(person).then(() => {
+        this.isSaving = false;
+        this.toaster.pop('success', 'Updated ' + person.name);
+        resolve()
+      });
     });
-    return d.promise;
   };
 
   removeContact(person) {
-    let d = this.$q.defer();
-    this.isDeleting = true;
-    this.Contact.remove(person).then(() => {
-      this.isDeleting = false;
-      var index = this.persons.indexOf(person);
-      this.persons.splice(index, 1);
-      this.selectedPerson = null;
-      this.toaster.pop('success', 'Deleted ' + person.name);
-      d.resolve()
+    return new Promise((resolve, reject) => {
+      this.isDeleting = true;
+      this.contact.remove(person).then(() => {
+        this.isDeleting = false;
+        var index = this.persons.indexOf(person);
+        this.persons.splice(index, 1);
+        this.selectedPerson = null;
+        this.toaster.pop('success', 'Deleted ' + person.name);
+        resolve()
+      });
     });
-    return d.promise;
   };
 
   createContact(person) {
-    let d = this.$q.defer();
-    this.isSaving = true;
-    this.Contact.save(person).then(() => {
-      this.isSaving = false;
-      this.selectedPerson = null;
-      this.hasMore = true;
-      this.page = 1;
-      this.persons = [];
-      this.loadContacts();
-      this.toaster.pop('success', 'Created ' + person.name);
-      d.resolve()
+    return new Promise((resolve, reject) => {
+      this.isSaving = true;
+      this.contact.save(person).then(() => {
+        this.isSaving = false;
+        this.selectedPerson = null;
+        this.hasMore = true;
+        this.page = 1;
+        this.persons = [];
+        this.loadContacts();
+        this.toaster.pop('success', 'Created ' + person.name);
+        resolve()
+      });
     });
-    return d.promise;
   };
-
-  watchFilters() {
-    this.$rootScope.$watch(() => {
-      return this.search + this.ordering + this.sorting;
-    }, (newVal) => {
-      if (angular.isDefined(newVal)) {
-        this.doSearch();
-      }
-    });
-  }
 
 }
 
 
 angular
     .module('codecraft')
-    .service('ContactService', ContactService);
+    .factory('ContactService', downgradeInjectable(ContactService));
