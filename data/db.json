@@ -1,66 +1,6 @@
 {
   "contacts": [
     {
-      "id": 700,
-      "createdTs": "2016-12-19T19:43:25.041720Z",
-      "updatedTs": "2016-12-19T19:43:25.041757Z",
-      "name": "Drake Murray",
-      "email": "lavinia_walsh@emanuel.us",
-      "sex": "F",
-      "birthdate": "1992-08-05T22:48:15.041268Z",
-      "phonenumber": "(936)532-4061",
-      "address": "38105 Weimann Cliffs",
-      "city": "New Josiannetown",
-      "country": "Northern Ireland",
-      "photo": "https://randomuser.me/api/portraits/women/43.jpg",
-      "favorite": false
-    },
-    {
-      "id": 679,
-      "createdTs": "2016-12-19T19:43:25.002355Z",
-      "updatedTs": "2016-12-19T19:43:25.002398Z",
-      "name": "Emilio Christiansen",
-      "email": "kennedy@lorna.org",
-      "sex": "F",
-      "birthdate": "1990-10-02T22:36:01.001872Z",
-      "phonenumber": "1-671-879-101003",
-      "address": "721 Daugherty Corner",
-      "city": "Russelmouth",
-      "country": "Wales",
-      "photo": "https://randomuser.me/api/portraits/women/22.jpg",
-      "favorite": false
-    },
-    {
-      "id": 685,
-      "createdTs": "2016-12-19T19:43:25.012978Z",
-      "updatedTs": "2016-12-19T19:43:25.013017Z",
-      "name": "Emmie Sporer",
-      "email": "nels.johns@verlie.com",
-      "sex": "M",
-      "birthdate": "1995-07-18T15:19:44.012503Z",
-      "phonenumber": "(1001)159-76210",
-      "address": "19729 Jamarcus Views",
-      "city": "Aufderharberg",
-      "country": "Scotland",
-      "photo": "https://randomuser.me/api/portraits/men/28.jpg",
-      "favorite": false
-    },
-    {
-      "id": 706,
-      "createdTs": "2016-12-19T19:43:25.053144Z",
-      "updatedTs": "2016-12-19T19:43:25.053182Z",
-      "name": "Enos Osinski",
-      "email": "merle@emilio.biz",
-      "sex": "M",
-      "birthdate": "1977-07-15T05:03:12.052687Z",
-      "phonenumber": "1-251-1022-104110 x47110",
-      "address": "596 Hansen Motorway",
-      "city": "McCluremouth",
-      "country": "England",
-      "photo": "https://randomuser.me/api/portraits/men/49.jpg",
-      "favorite": false
-    },
-    {
       "id": 663,
       "createdTs": "2016-12-19T19:43:24.970635Z",
       "updatedTs": "2016-12-19T19:43:24.970675Z",
@@ -599,6 +539,9 @@
       "country": "Wales",
       "photo": "https://randomuser.me/api/portraits/women/19.jpg",
       "favorite": false
+    },
+    {
+      "id": 705
     }
   ]
 }

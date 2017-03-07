@@ -12,8 +12,11 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
 import {UpgradeModule} from '@angular/upgrade/static';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
-import {InfiniteScrollModule} from 'angular2-infinite-scroll';
+import {RouterModule} from "@angular/router";
 
+
+import {InfiniteScrollModule} from 'angular2-infinite-scroll';
+import {ToasterModule, ToasterService} from 'angular2-toaster';
 
 import {CardComponent} from "./components/card.component";
 import {SpinnerComponent} from "./components/spinner.component"
@@ -29,7 +32,10 @@ import {LaddaModule} from "angular2-ladda/module/module";
 import {PersonListComponent} from "./components/person-list.component";
 import {PersonEditComponent} from "./components/person-edit.component";
 import {SearchComponent} from "./components/search.component";
+import {AppRootComponent} from "./components/app-root.component"
 
+import {routes} from './app.routes'
+import {PersonCreateComponent} from "./components/person-create.component";
 
 @NgModule({
   imports: [
@@ -39,41 +45,54 @@ import {SearchComponent} from "./components/search.component";
     LaddaModule,
     FormsModule,
     ReactiveFormsModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    ToasterModule,
+    RouterModule.forRoot(routes, {useHash: true})
   ],
   declarations: [
     CardComponent,
     SpinnerComponent,
     PersonListComponent,
+    PersonCreateComponent,
     DefaultImagePipe,
     PersonEditComponent,
-    SearchComponent
+    SearchComponent,
+    AppRootComponent
   ],
   entryComponents: [
     CardComponent,
     SpinnerComponent,
     PersonListComponent,
     PersonEditComponent,
-    SearchComponent
+    SearchComponent,
+    AppRootComponent
   ],
   providers: [
     Contact,
     ContactService,
-    toasterServiceProvider,
+    // toasterServiceProvider,
     uiRouterStateParamsProvider,
     uiRouterStateProvider
   ],
+  bootstrap: [
+    AppRootComponent
+  ]
 
 })
 export class AppModule {
   // Override Angular 2 bootstrap so it doesn't do anything
-  ngDoBootstrap() {
-  }
+  // ngDoBootstrap() {
+  // }
 }
 
 // Bootstrap using the UpgradeModule
-platformBrowserDynamic().bootstrapModule(AppModule).then(platformRef => {
-  const upgrade = platformRef.injector.get(UpgradeModule) as UpgradeModule;
-  upgrade.bootstrap(document.body, ['codecraft']);
-});
+// platformBrowserDynamic().bootstrapModule(AppModule).then(platformRef => {
+//   const upgrade = platformRef.injector.get(UpgradeModule) as UpgradeModule;
+//   upgrade.bootstrap(document.body, ['codecraft']);
+// });
 
+platformBrowserDynamic().bootstrapModule(AppModule).then(platformRef => {
+  // const upgrade = platformRef.injector.get(UpgradeModule) as UpgradeModule;
+  // upgrade.bootstrap(document.body, ['codecraft']);
+  console.log("Bootstrapped");
+});

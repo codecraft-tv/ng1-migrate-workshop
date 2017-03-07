@@ -1,6 +1,4 @@
-// import * as angular from 'angular';
 import {Input, Component} from "@angular/core";
-// import {downgradeComponent} from "@angular/upgrade/static";
 import {ContactService} from "../services/contact.service";
 
 @Component({
@@ -30,7 +28,7 @@ import {ContactService} from "../services/contact.service";
         </p>
 
         <a class="btn btn-default btn-sm"
-           [attr.href]="'#!/edit/' +  user.email">
+            [routerLink]="['/edit', user.email]">
           <i class="fa fa-pencil"></i>
           &nbsp;Edit
         </a>
@@ -63,11 +61,3 @@ export class CardComponent {
     });
   };
 }
-
-
-// angular
-//     .module('codecraft')
-//     .directive('ccCard', downgradeComponent({
-//       component: CardComponent,
-//       inputs: ['user']
-//     }) as angular.IDirectiveFactory);
